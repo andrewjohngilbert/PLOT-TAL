@@ -83,7 +83,7 @@
 
                     <!-- Supplementary PDF link -->
                   <span class="link-block">
-                      <a href="/assets/ECCV_2024___Optimal_Transport_TALSuppMat.pdf" target="_blank"
+                      <a href="https://andrewjohngilbert.github.io/PLOT-TAL/assets/ECCV_2024___Optimal_Transport_TALSuppMat.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -132,7 +132,7 @@
     <div class="hero-body">
       <img src="assets/Plotal_method.jpg">
       <h2 class="subtitle has-text-centered">
-        An overview of the approach. \textbf{A.)} We sample $T$ overlapping segments of videos $\mathcal{V}$. \textbf{B.)} For each class label $K$, we randomly initialize $N$ learnable vectors concatenated with the class label. \textbf{C.)} Video features are extracted via a pre-trained 3D CNN encoder (I3D ) while $N$ prompts for each class $k$ are also extracted via the pre-trained CLIP text encoder. \textbf{D.)} We temporally downsample the features using max-pooling. \textbf{E.)} We search the optimal transport plan between the $N$ prompt features and video segments at each temporal level. Following this stage, we sum all $N$ vectors for each $K$. \textbf{F.)} At each temporal level $L$, we compute the cosine similarity between each prompt vector $P_k$ and each video segment $x_i$ and then apply a threshold to retrieve action candidates. These candidates are passed to the regression head, which minimizes the distance between the start and end actions and each embedding. Only components with the fire symbol are trained, and all others are frozen.
+        An overview of the approach. A.) We sample T overlapping segments of videos V. B.) For each class label $K$, we randomly initialize $N$ learnable vectors concatenated with the class label. C.) Video features are extracted via a pre-trained 3D CNN encoder (I3D) while N prompts for each class k are also extracted via the pre-trained CLIP text encoder. D.) We temporally downsample the features using max-pooling. E.) We search the optimal transport plan between the $N$ prompt features and video segments at each temporal level. Following this stage, we sum all N vectors for each K. F.) At each temporal level L, we compute the cosine similarity between each prompt vector Pk and each video segment xi and then apply a threshold to retrieve action candidates. These candidates are passed to the regression head, which minimizes the distance between the start and end actions and each embedding. Only components with the fire symbol are trained, and all others are frozen.
       </h2>
     </div>
   </div>
@@ -176,11 +176,11 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@inproceedings{Balan:CVMP:2023,
-        AUTHOR = Balan, Kar and Black, Alex and Jenni, Simon  and Parsons, Andy and  Gilbert Andrew and Collomosse, John",
-        TITLE = "DECORAIT - DECentralized Opt-in/out Registry for AI Training​",
-        BOOKTITLE = " The 20th ACM SIGGRAPH European Conference on Visual Media Production",
-        YEAR = "2023",
+      <pre><code>@inproceedings{Fish:arxiv:2024,
+        AUTHOR =  Fish, Ed and Weinbren, Jon  and Gilbert, Andrew ",
+        TITLE = "PLOT-TAL--Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization​",
+        BOOKTITLE = " ArXiv abs/2403.18915",
+        YEAR = "2024",
         ​}</code></pre>
     </div>
 </section>
