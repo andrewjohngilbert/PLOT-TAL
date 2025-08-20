@@ -2,214 +2,245 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="This paper introduces a novel approach to temporal action localization (TAL) in few-shot learning. Our work addresses the inherent limitations of conventional single-prompt learning methods that often lead to overfitting due to the inability to generalize across varying contexts in real-world videos.">
-  <meta property="og:title" content="PLOT-TAL--Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization"/>
-  <meta property="og:description" content="This paper introduces a novel approach to temporal action localization (TAL) in few-shot learning. Our work addresses the inherent limitations of conventional single-prompt learning methods that often lead to overfitting due to the inability to generalize across varying contexts in real-world videos."/>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-81D6829LG0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-81D6829LG0');
+  </script>
+
+  <!-- Meta + SEO (same as before)... -->
+  <meta name="description" content="PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization. A multi-prompt framework with optimal transport to improve generalization and temporal precision on THUMOS14 and EPIC-Kitchens-100.">
+  <meta property="og:title" content="PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization"/>
+  <meta property="og:description" content="A multi-prompt optimal transport approach for few-shot temporal action localization that improves generalization and robustness."/>
   <meta property="og:url" content="https://andrewjohngilbert.github.io/PLOT-TAL/"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="assets/PLotal_teaser.jpg" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
-
-
-  <meta name="twitter:title" content="PLOT-TAL--Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization">
-  <meta name="twitter:description" content="This paper introduces a novel approach to temporal action localization (TAL) in few-shot learning. Our work addresses the inherent limitations of conventional single-prompt learning methods that often lead to overfitting due to the inability to generalize across varying contexts in real-world videos.">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization">
+  <meta name="twitter:description" content="A multi-prompt optimal transport approach for few-shot TAL that improves generalization and robustness.">
+  <meta name="twitter:image" content="assets/PLotal_teaser.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="Temporal Action Localization, Few-Shot Learning, Optimal Transport, Prompt Learning, CLIP, Video Understanding, THUMOS14, EPIC-Kitchens-100, ICCV 2025, Vision and Language Workshop">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization</title>
 
-
-  <title>PLOT-TAL--Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization</title>
+  <!-- Fonts + CSS -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon-32x32.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
+  <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <!-- JSON-LD blocks (ScholarlyArticle, Website, WebPage) go here, unchanged -->
 </head>
 <body>
 
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization
+          </h1>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
+          <!-- Authors -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://ed-fish.github.io/" target="_blank">Ed Fish</a></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/jonweinbren/" target="_blank">Jon Weinbren</a></span>,
+            <span class="author-block"><a href="https://andrewjohngilbert.github.io/" target="_blank">Andrew Gilbert</a></span>
+          </div>
+
+          <!-- Conference info -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              University of Surrey<br>
+              <a href="https://iccv2025.thecvf.com/" target="_blank">International Conference on Computer Vision (ICCV’25)</a> – 
+              6th Workshop on Closing the Loop between Vision and Language, 2025
+            </span>
+          </div>
+
+          <!-- ✅ Social share buttons inserted here -->
+          <div class="social-share" style="margin-top:1rem;">
+            <p class="has-text-grey is-size-6" style="margin-bottom:0.5rem;">Share this page</p>
+            <a id="share-x"
+               class="button is-small is-dark is-rounded"
+               target="_blank" rel="noopener"
+               aria-label="Share on X (Twitter)">
+              <span class="icon"><i class="fab fa-x-twitter"></i></span>
+              <span>X</span>
+            </a>
+            <a id="share-linkedin"
+               class="button is-small is-link is-rounded"
+               target="_blank" rel="noopener"
+               aria-label="Share on LinkedIn">
+              <span class="icon"><i class="fab fa-linkedin"></i></span>
+              <span>LinkedIn</span>
+            </a>
+            <a id="copy-link"
+               class="button is-small is-light is-rounded"
+               aria-label="Copy link to clipboard">
+              <span class="icon"><i class="fas fa-link"></i></span>
+              <span>Copy link</span>
+            </a>
+          </div>
+
+          <script>
+            (function () {
+              var pageUrl = (document.querySelector('link[rel="canonical"]')?.href) || window.location.href;
+              var pageTitle = document.title;
+              // X/Twitter
+              var xParams = new URLSearchParams({ url: pageUrl, text: pageTitle });
+              document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?' + xParams.toString();
+              // LinkedIn
+              var liParams = new URLSearchParams({ mini: 'true', url: pageUrl, title: pageTitle });
+              document.getElementById('share-linkedin').href = 'https://www.linkedin.com/shareArticle?' + liParams.toString();
+              // Copy link
+              var copyBtn = document.getElementById('copy-link');
+              copyBtn.addEventListener('click', function () {
+                navigator.clipboard.writeText(pageUrl).then(function () {
+                  copyBtn.classList.add('is-success');
+                  copyBtn.querySelector('span:last-child').textContent = 'Copied!';
+                  setTimeout(function () {
+                    copyBtn.classList.remove('is-success');
+                    copyBtn.querySelector('span:last-child').textContent = 'Copy link';
+                  }, 2000);
+                });
+              });
+            })();
+          </script>
+          <!-- ✅ End social share buttons -->
+
+          <!-- Paper links -->
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">PLOT-TAL--Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://ed-fish.github.io/" target="_blank">Ed Fish</a><sup></sup>,</span>
-                <span class="author-block">
-                  <a href="https://www.linkedin.com/in/jonweinbren/" target="_blank">Jon Weinbren</a><sup></sup>,</span>
-                  <span class="author-block">
-                    <a href="https://andrewjohngilbert.github.io/" target="_blank">Andrew Gilbert</a><sup></sup>,</span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">University of Surrey<br>​arXiv preprint arXiv:2403.18915, 2024</span>
-                
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/abs/2403.18915" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                  <span class="link-block">
-                      <a href="https://andrewjohngilbert.github.io/PLOT-TAL/assets/ECCV_2024___Optimal_Transport_TALSuppMat.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
- 
-                  <!-- Github link -->
-              <!--    <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-              -->
-
-                
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.18915" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>Paper (arXiv)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="assets/ECCV_2024___Optimal_Transport_TALSuppMat.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Supplementary</span>
+                </a>
+              </span>
             </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <h2 class="subtitle is-4">Abstract</h2>
+        <p>
+          Temporal Action Localization (TAL) aims to identify the start and end times of actions in untrimmed videos.
+          In this work, we introduce PLOT-TAL, a novel multi-prompt framework that leverages Optimal Transport (OT) to
+          enhance generalization and temporal precision in few-shot TAL tasks. By integrating OT with prompt learning,
+          PLOT-TAL effectively aligns video features with action prompts, improving localization accuracy even with limited
+          training data. Our approach demonstrates significant improvements on benchmark datasets THUMOS14 and EPIC-Kitchens-100,
+          showcasing its robustness and effectiveness in real-world scenarios.
+        </p>
+      </div>
+    </div>
+  </div>  
+</section>  
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="assets/PLotal_teaser.jpg" alt="PLOT-TAL Teaser">
+        <h2 class="subtitle has-text-centered">
+          Existing methods learn a single prompt to locate and classify actions. PLOT-TAL uses multiple complementary prompts to improve class generalization and temporal discrimination. Green frames indicate foreground features.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="assets/Plotal_method.jpg" alt="PLOT-TAL Method Overview">
+        <h2 class="subtitle has-text-centered">
+          Overview: (A) Sample overlapping video segments. (B) For each class, initialize N learnable prompt vectors concatenated with the class label. (C) Extract video features with a pre-trained 3D CNN (I3D) and prompt features via the CLIP text encoder. (D) Downsample temporally. (E) Compute optimal transport plans between prompt features and segments per temporal level; sum N vectors per class. (F) Compute cosine similarity, threshold to retrieve candidates, and regress temporal boundaries. Only the fire-marked components are trained; others are frozen.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="hero teaser"> 
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="assets/Plotal_results.jpg" alt="PLOT-TAL Results">
+        <h2 class="subtitle has-text-centered">
+          PLOT-TAL outperforms existing methods on THUMOS14 and EPIC-Kitchens-100, achieving state-of-the-art results in few-shot TAL.
+        </h2>
+      </div>
+    </div>  
+  </section>
+
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <button class="button is-small is-info" onclick="copyBibtex()">Copy BibTeX</button>
+<pre id="bibtex-entry"><code>@inproceedings{Fish2025PLOTTAL,
+  author    = {Ed Fish and Jon Weinbren and Andrew Gilbert},
+  title     = {PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization},
+  booktitle = {International Conference on Computer Vision (ICCV'25) - 6th Workshop on Closing the Loop between Vision and Language},
+  year      = {2025},
+  url       = {https://andrewjohngilbert.github.io/PLOT-TAL/}
+}</code></pre>
+      <script>
+        function copyBibtex() {
+          var bib = document.getElementById('bibtex-entry').innerText;
+          navigator.clipboard.writeText(bib);
+        }
+      </script>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>
+              adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the design; please link back in the footer.
+              Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="assets/PLotal_teaser.jpg">
-      <h2 class="subtitle has-text-centered">
-        Existing methods learn a single prompt to identify the location and class of a given action, but multiple complimentary views can help with both class generalization and temporal discrimination within the video. Green frames indicate the foreground features.
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="assets/Plotal_method.jpg">
-      <h2 class="subtitle has-text-centered">
-        An overview of the approach. A.) We sample T overlapping segments of videos V. B.) For each class label K, we randomly initialize N learnable vectors concatenated with the class label. C.) Video features are extracted via a pre-trained 3D CNN encoder (I3D) while N prompts for each class k are also extracted via the pre-trained CLIP text encoder. D.) We temporally downsample the features using max-pooling. E.) We search the optimal transport plan between the N prompt features and video segments at each temporal level. Following this stage, we sum all N vectors for each K. F.) At each temporal level L, we compute the cosine similarity between each prompt vector Pk and each video segment xi and then apply a threshold to retrieve action candidates. These candidates are passed to the regression head, which minimizes the distance between the start and end actions and each embedding. Only components with the fire symbol are trained, and all others are frozen.
-      </h2>
-    </div>
-  </div>
-</section>
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            This paper introduces a novel approach to temporal action localization (TAL) in few-shot learning. Our work addresses the inherent limitations of conventional single-prompt learning methods that often lead to overfitting due to the inability to generalize across varying contexts in real-world videos. Recognizing the diversity of camera views, backgrounds, and objects in videos, we propose a multi-prompt learning framework enhanced with optimal transport. This design allows the model to learn a set of diverse prompts for each action, capturing general characteristics more effectively and distributing the representation to mitigate the risk of overfitting. Furthermore, by employing optimal transport theory, we efficiently align these prompts with action features, optimizing for a comprehensive representation that adapts to the multifaceted nature of video data. Our experiments demonstrate significant improvements in action localization accuracy and robustness in few-shot settings on the standard challenging datasets of THUMOS-14 and EpicKitchens100, highlighting the efficacy of our multi-prompt optimal transport approach in overcoming the challenges of conventional few-shot TAL methods.          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-
-<!-- Paper poster -->
-<!--
-  <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
--->
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@inproceedings{Fish:arxiv:2024,
-        AUTHOR =  Fish, Ed and Weinbren, Jon  and Gilbert, Andrew ",
-        TITLE = "PLOT-TAL--Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization​",
-        BOOKTITLE = " ArXiv abs/2403.18915",
-        YEAR = "2024",
-        ​}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
