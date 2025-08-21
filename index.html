@@ -134,7 +134,14 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="assets/ECCV_2024___Optimal_Transport_TALSuppMat.pdf" target="_blank"
+                <a href="assets/PLOT-TAL_Paper.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper </span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="assets/Plot-Tal_Suppmat.pdf" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Supplementary</span>
@@ -154,75 +161,97 @@
       <div class="column is-10">
         <h2 class="subtitle is-4">Abstract</h2>
         <p>
-          Temporal Action Localization (TAL) aims to identify the start and end times of actions in untrimmed videos.
-          In this work, we introduce PLOT-TAL, a novel multi-prompt framework that leverages Optimal Transport (OT) to
-          enhance generalization and temporal precision in few-shot TAL tasks. By integrating OT with prompt learning,
-          PLOT-TAL effectively aligns video features with action prompts, improving localization accuracy even with limited
-          training data. Our approach demonstrates significant improvements on benchmark datasets THUMOS14 and EPIC-Kitchens-100,
-          showcasing its robustness and effectiveness in real-world scenarios.
+          Few-shot temporal action localization (TAL) methods that adapt large models via single-prompt tuning often fail to produce precise temporal boundaries. This is because a single prompt tends to learn a non-discriminative mean representation from sparse data, limiting generalization. 
+          We propose <strong>PLOT-TAL</strong>, a multi-prompt ensemble framework that encourages each prompt to specialize on compositional sub-events of an action. To enforce this specialization, we leverage <em>Optimal Transport (OT)</em> to find globally optimal alignments between the prompt ensemble and a video’s temporal features. 
+          Our approach eliminates the need for complex meta-learning while achieving state-of-the-art results on THUMOS’14 and EPIC-Kitchens. The significant improvements, particularly at higher IoU thresholds, validate that learning distributed, compositional representations leads to more precise temporal localization in few-shot settings.
         </p>
+
+        <!-- ✅ TL;DR Box -->
+        <div class="notification is-primary is-light" style="margin-top:1rem;">
+          <strong>TL;DR:</strong> PLOT-TAL replaces single prompts with Optimal Transport–regulated prompt ensembles, learning compositional sub-events for actions. This yields state-of-the-art few-shot TAL, especially at high IoU thresholds.
+        </div>
       </div>
     </div>
   </div>  
-</section>  
+</section>
 
   <!-- Teaser -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="assets/PLotal_teaser.jpg" alt="PLOT-TAL Teaser">
-        <h2 class="subtitle has-text-centered">
-          Existing methods learn a single prompt to locate and classify actions. PLOT-TAL uses multiple complementary prompts to improve class generalization and temporal discrimination. Green frames indicate foreground features.
-        </h2>
-      </div>
+ <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="assets/PLOT-TAL_Teaser.jpg" alt="PLOT-TAL Teaser">
+      <h2 class="subtitle has-text-centered">
+        <strong>Learning for Few-Shot Generalization</strong>. A single prompt trained on a few examples of “diving” in a specific context (top-right) tends to overfit to environmental cues like the cliffs and sea. This holistic representation fails to generalize to a novel environment. In contrast, our method (bottom right) learns an ensemble of prompts that specialize on the compositional, environment-agnostic sub-events of the action: (1) the preparation/stance, (2) the mid-air rotation, and (3) the water entry splash. Optimal Transport is the key mechanism that enforces this specialization, ensuring the prompts remain diverse and discriminative. By identifying these core components, our framework can robustly localize the “diving” action with high precision, even when presented with a completely different environment, such as an indoor swimming pool (left panel), using only a few samples. This compositional approach leads to more precise temporal localization in few-shot settings.
+      </h2>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Method -->
   <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="assets/Plotal_method.jpg" alt="PLOT-TAL Method Overview">
-        <h2 class="subtitle has-text-centered">
-          Overview: (A) Sample overlapping video segments. (B) For each class, initialize N learnable prompt vectors concatenated with the class label. (C) Extract video features with a pre-trained 3D CNN (I3D) and prompt features via the CLIP text encoder. (D) Downsample temporally. (E) Compute optimal transport plans between prompt features and segments per temporal level; sum N vectors per class. (F) Compute cosine similarity, threshold to retrieve candidates, and regress temporal boundaries. Only the fire-marked components are trained; others are frozen.
-        </h2>
-      </div>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="assets/Plotal_method.jpg" alt="PLOT-TAL Method Overview">
+      <h2 class="subtitle has-text-centered">
+        Overview of <strong>PLOT-TAL</strong>. 
+        (A) Extract video clips. (B) Generate an ensemble of learnable prompts per class. 
+        (C) Encode video features with a frozen 3D CNN and text prompts with a frozen CLIP encoder. 
+        (D) Build a temporal feature pyramid. 
+        (E) Use Optimal Transport to align prompts with video features at multiple resolutions. 
+        (F) Pass aligned features to lightweight heads for classification and boundary regression. 
+        Only the fire-marked modules are trained; all others are frozen.
+      </h2>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Results -->
-  <section class="hero teaser"> 
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="assets/Plotal_results.jpg" alt="PLOT-TAL Results">
-        <h2 class="subtitle has-text-centered">
-          PLOT-TAL outperforms existing methods on THUMOS14 and EPIC-Kitchens-100, achieving state-of-the-art results in few-shot TAL.
-        </h2>
-      </div>
-    </div>  
-  </section>
+ <section class="hero teaser"> 
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="assets/PLOT-TAL_Results.jpg" alt="PLOT-TAL Results">
+      <h2 class="subtitle has-text-centered">
+        <strong>PLOT-TAL</strong> outperforms state-of-the-art few-shot TAL methods on THUMOS’14 and EPIC-Kitchens-100. 
+        The graph shows the mean Average Precision (mAP) at different IoU thresholds, demonstrating significant improvements, especially at higher IoU levels. 
+        This indicates that our method provides more precise temporal localization, confirming the effectiveness of Optimal Transport in learning discriminative prompt ensembles.
+      </h2>
+    </div>
+  </div>  
+</section>
 
+  <!-- Results Graph-->
+ <section class="hero teaser"> 
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="assets/PLOT-TAL_ResultGraph.jpg" alt="PLOT-TAL Results">
+      <h2 class="subtitle has-text-centered">
+        <strong>Normalized transport cost per prompt for “Cricket Shot” after training.</strong> Prompt 1 aligns with global information, while other prompts capture complementary sub-events. Lower transport cost indicates closer alignment in the optimal transport algorithm. This demonstrates how our method learns to specialize prompts for different aspects of the action, leading to improved temporal localization. The diverse transport costs across prompts highlight the effectiveness of our multi-prompt approach, where each prompt captures unique, discriminative features of the action. The transport cost is normalized to the maximum cost across all prompts, allowing for a clear comparison
+      </h2>
+    </div>
+  </div>  
+</section>
 
-  <!-- BibTeX -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <button class="button is-small is-info" onclick="copyBibtex()">Copy BibTeX</button>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <button class="button is-small is-info" onclick="copyBibtex()">Copy BibTeX</button>
 <pre id="bibtex-entry"><code>@inproceedings{Fish2025PLOTTAL,
-  author    = {Ed Fish and Jon Weinbren and Andrew Gilbert},
+  author    = {Edward Fish and Andrew Gilbert},
   title     = {PLOT-TAL: Prompt Learning with Optimal Transport for Few-Shot Temporal Action Localization},
-  booktitle = {International Conference on Computer Vision (ICCV'25) - 6th Workshop on Closing the Loop between Vision and Language},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops},
   year      = {2025},
+  series    = {Closing the Loop between Vision and Language, 6th Workshop},
+  publisher = {IEEE},
   url       = {https://andrewjohngilbert.github.io/PLOT-TAL/}
 }</code></pre>
-      <script>
-        function copyBibtex() {
-          var bib = document.getElementById('bibtex-entry').innerText;
-          navigator.clipboard.writeText(bib);
-        }
-      </script>
-    </div>
-  </section>
+    <script>
+      function copyBibtex() {
+        var bib = document.getElementById('bibtex-entry').innerText;
+        navigator.clipboard.writeText(bib);
+      }
+    </script>
+  </div>
+</section>
 
   <footer class="footer">
     <div class="container">
